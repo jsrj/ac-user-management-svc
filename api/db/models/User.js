@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 // Consts
 const Schema = mongoose.Schema
 
-/** Auth0 User Data Reference
+/** -- Auth0 User Data Reference --
 @param {object} user - The user being created
 @param {string} user.id - user id
 @param {string} user.tenant - Auth0 tenant name
@@ -25,11 +25,41 @@ const Schema = mongoose.Schema
 */
 
 const UserSchema = new Schema({
+
 	userID: { type: String },
-	lname: { type: String },
 	username: { type: String },
-	email: { type: String },
-	password: { type: String },
+
+	firstname: {
+		type: String,
+		default: 'anonymous'
+	},
+	lastName: {
+		type: String,
+		default: 'anonymous'
+	},
+	
+	contactInfo: {
+		email: {
+			address: {
+				type: String,
+				default: 'unknown'
+			},
+			isVerified: {
+				type: Boolean,
+				default: false
+			}
+		},
+		phone: { 
+			number: {
+				type: String,
+				default: '1-000-000-0000'
+			},
+			isVerified: {
+				type: Boolean,
+				default: false
+			}
+		}
+	},
 })
 
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 // Create the connection
-mongoose.connect('mongodb://localhost/database', {
+mongoose.connect(process.env.MONGODB_URI, {
 	useNewUrlParser: true
 })
 .catch((err) => {
