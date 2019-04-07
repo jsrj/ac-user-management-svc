@@ -30,12 +30,10 @@ app.use(function (req, res, next) {
 });
 
 // Import routes
-const login = require('./api/routes/login')
-const register = require('./api/routes/register')
+const router = require('./api/routes/router')
 
 // Use routes
-app.use('/login', login)
-app.use('/register', register)
+app.use('/', router)
 
 // Listen for the server at a port.
 app.listen(process.env.PORT || 8000, (err) => {
