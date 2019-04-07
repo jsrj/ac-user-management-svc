@@ -1,7 +1,6 @@
 // Set up express
 const express = require('express')
 const app = express()
-require('dotenv').config()
 
 const db = require('./api/db/connection')
 
