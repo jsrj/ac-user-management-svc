@@ -17,6 +17,7 @@ app.use(bodyParser.json())
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
+    // TODO: Configure this to only accept connections from the Auth0 tenant app, and arjaycodes.com app instances
     res.setHeader('Access-Control-Allow-Origin', '*')
 
     // Request methods you wish to allow
