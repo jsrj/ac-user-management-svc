@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 // Create the connection
-mongoose.connect(process.env.MONGO, {
+mongoose.connect(process.env.MONGODB_URI, {
 	useNewUrlParser: true
 })
 .catch((err) => {
