@@ -12,9 +12,13 @@ router.get('/', (req, res, next) => {
 })
 
 router.post(`/${process.env.AUTH0_HOOK}`, (req, res, next) => {
-  res.json({
-    message: 'hello from auth0_hook'
-  });
+
+  const responseObj = {
+    data: req.body
+  };
+  console.log(responseObj);
+
+  res.json(responseObj);
 })
 
 module.exports = router
