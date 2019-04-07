@@ -38,5 +38,5 @@ app.use('/', router)
 
 // Listen for the server at a port.
 app.listen(process.env.PORT || 8000, (err) => {
-    console.log('Server running on ' + 8000)
+    console.log('Server running on ' + (process.env.PORT || 8000))
 })
