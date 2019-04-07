@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 // Consts
 const Schema = mongoose.Schema
 
-/** Auth0 User Data Reference
+/** -- Auth0 User Data Reference --
 @param {object} user - The user being created
 @param {string} user.id - user id
 @param {string} user.tenant - Auth0 tenant name
