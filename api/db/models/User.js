@@ -26,10 +26,37 @@ const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
 	userID: { type: String },
-	lname: { type: String },
 	username: { type: String },
-	email: { type: String },
-	password: { type: String },
+	contactInfo: {
+		firstname: {
+			type: String,
+			default: 'anonymous'
+		},
+		lastName: {
+			type: String,
+			default: 'anonymous'
+		},
+		email: {
+			address: {
+				type: String,
+				default: 'unknown'
+			},
+			isVerified: {
+				type: Boolean,
+				default: false
+			}
+		},
+		phone: { 
+			number: {
+				type: String,
+				default: '(000) 000-0000'
+			},
+			isVerified: {
+				type: Boolean,
+				default: false
+			}
+		}
+	},
 })
 
 
