@@ -17,7 +17,7 @@ router.post(`/${process.env.AUTH0_HOOK}`, (req, res, next) => {
     data: req.body
   };
   console.log(responseObj);
-  console.log(`Request Recieved From: ${req.host}`);
+  console.log(`Request Recieved From: ${req.hostname}`);
 
   res.json(responseObj);
 })
