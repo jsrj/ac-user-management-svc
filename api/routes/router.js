@@ -16,8 +16,19 @@ router.post(`/${process.env.AUTH0_HOOK}`, (req, res, next) => {
   const responseObj = {
     data: req.body
   };
-  console.log(responseObj);
-  console.log(`Request Recieved At: ${req.hostname}`);
+  
+  console.log('\n');
+  console.log('----- User Data: -----');
+  console.log(`User ID: ${req.body.userID}`);
+  console.log(`Username: ${req.body.username}`);
+  console.log('----- User Data: -----');
+  console.log('\n');
+  console.log('----- Contact Info: -----');
+  console.log(`Email Address: ${req.body.contactInfo.email.address}`);
+  console.log(`Email Verified?: ${req.body.contactInfo.email.isVerified}`);
+  console.log(`Phone Number: ${req.body.contactInfo.phone.number}`);
+  console.log(`Phone Number Verified?: ${req.body.contactInfo.phone.isVerified}`);
+  console.log('\n');
 
   res.json(responseObj);
 })
