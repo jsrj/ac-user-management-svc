@@ -25,17 +25,20 @@ const Schema = mongoose.Schema
 */
 
 const UserSchema = new Schema({
+
 	userID: { type: String },
 	username: { type: String },
+
+	firstname: {
+		type: String,
+		default: 'anonymous'
+	},
+	lastName: {
+		type: String,
+		default: 'anonymous'
+	},
+	
 	contactInfo: {
-		firstname: {
-			type: String,
-			default: 'anonymous'
-		},
-		lastName: {
-			type: String,
-			default: 'anonymous'
-		},
 		email: {
 			address: {
 				type: String,
@@ -49,7 +52,7 @@ const UserSchema = new Schema({
 		phone: { 
 			number: {
 				type: String,
-				default: '(000) 000-0000'
+				default: '1-000-000-0000'
 			},
 			isVerified: {
 				type: Boolean,
