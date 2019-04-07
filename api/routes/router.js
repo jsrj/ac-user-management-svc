@@ -69,4 +69,39 @@ router.get(`/${process.env.CLIENT}`, (req, res, next) => {
   }
 })
 
+router.patch(`/${process.env.CLIENT}`, (req, res, next) => {
+  if (req.query.username) {
+    User.findOne({ username: req.query.username})
+    .exec()
+    .then(user => {
+
+      // Patch the specified User
+      User.updateOne({username: user.username}, req.body)
+      .exec()
+
+      // Find and return the patched User
+      .then(() => {
+        User.findOne({username: user.username})
+        .exec()
+        .then(patchedUser => res.status(200).json(patchedUser).end())
+        
+        // Handle rejected promises
+        .catch(err => {
+          res.status(500).json(err).end()
+        })
+      })
+      .catch(err => {
+        res.status(500).json(err).end()
+      })
+    })
+    .catch(err => {
+      res.status(500).json(err).end()
+    })
+
+  } else {
+    // If no username specified  
+    res.status(400).json({ message: 'No username specified.'}).end()
+  }
+})
+
 module.exports = router
