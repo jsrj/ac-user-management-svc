@@ -21,17 +21,22 @@ router.post(`/${process.env.AUTH0_HOOK}`, (req, res, next) => {
   const lastName = 'not-set';
   const { userID, username, contactInfo } = req.body
 
-  let newUser = new User({ 
+  new User({ 
     userID, 
     username, 
     firstName, 
     lastName, 
     contactInfo 
-  });
-
-  console.log(newUser);
-
-  res.json(responseObj);
+  })
+  .save()
+  .then(() => {
+    console.log('--- New User Profile Created ---');
+    res.status(200).json({ message: 'User Data Generation Succeeded'}).end()
+  })
+  .catch((err) => {
+    console.log(err)
+    res.status(500).json({ message: 'User Data Generation Failed' }).end()
+  })
 })
 
 module.exports = router
