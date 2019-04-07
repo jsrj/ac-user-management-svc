@@ -1,6 +1,7 @@
 // Set up express
 const express = require('express')
 const app = express()
+const config = require('dotenv').config()
 
 const db = require('./api/db/connection')
 
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 // Use .env files in local setup
-!process.env.NODE_ENV ? require('dotenv').config() : console.log('DEV:PROD')
+!process.env.NODE_ENV ? config : console.log('DEV:PROD')
 
 //Add Headers
 app.use(function (req, res, next) {
